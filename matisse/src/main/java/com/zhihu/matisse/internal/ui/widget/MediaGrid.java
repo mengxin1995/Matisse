@@ -25,13 +25,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.zhihu.matisse.R;
 import com.zhihu.matisse.internal.entity.Item;
 import com.zhihu.matisse.internal.entity.SelectionSpec;
 
 public class MediaGrid extends SquareFrameLayout implements View.OnClickListener {
 
-    private ImageView mThumbnail;
+    private SimpleDraweeView mThumbnail;
     private CheckView mCheckView;
     private ImageView mGifTag;
     private TextView mVideoDuration;
@@ -53,7 +54,7 @@ public class MediaGrid extends SquareFrameLayout implements View.OnClickListener
     private void init(Context context) {
         LayoutInflater.from(context).inflate(R.layout.media_grid_content, this, true);
 
-        mThumbnail = (ImageView) findViewById(R.id.media_thumbnail);
+        mThumbnail = (SimpleDraweeView) findViewById(R.id.media_thumbnail);
         mCheckView = (CheckView) findViewById(R.id.check_view);
         mGifTag = (ImageView) findViewById(R.id.gif);
         mVideoDuration = (TextView) findViewById(R.id.video_duration);

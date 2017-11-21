@@ -22,6 +22,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.zhihu.matisse.engine.ImageEngine;
 
 /**
@@ -31,26 +32,13 @@ import com.zhihu.matisse.engine.ImageEngine;
 public class GlideEngine implements ImageEngine {
 
     @Override
-    public void loadThumbnail(Context context, int resize, Drawable placeholder, ImageView imageView, Uri uri) {
-        Glide.with(context)
-                .load(uri)
-                .asBitmap()  // some .jpeg files are actually gif
-                .placeholder(placeholder)
-                .override(resize, resize)
-                .centerCrop()
-                .into(imageView);
+    public void loadThumbnail(Context context, int resize, Drawable placeholder, SimpleDraweeView imageView, Uri uri) {
+
     }
 
     @Override
-    public void loadGifThumbnail(Context context, int resize, Drawable placeholder, ImageView imageView,
-                                 Uri uri) {
-        Glide.with(context)
-                .load(uri)
-                .asBitmap()
-                .placeholder(placeholder)
-                .override(resize, resize)
-                .centerCrop()
-                .into(imageView);
+    public void loadGifThumbnail(Context context, int resize, Drawable placeholder, SimpleDraweeView imageView, Uri uri) {
+
     }
 
     @Override

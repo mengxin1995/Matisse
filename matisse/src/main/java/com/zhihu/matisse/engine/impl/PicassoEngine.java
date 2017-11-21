@@ -20,6 +20,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.widget.ImageView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.squareup.picasso.Picasso;
 import com.zhihu.matisse.engine.ImageEngine;
 
@@ -30,7 +31,7 @@ import com.zhihu.matisse.engine.ImageEngine;
 public class PicassoEngine implements ImageEngine {
 
     @Override
-    public void loadThumbnail(Context context, int resize, Drawable placeholder, ImageView imageView, Uri uri) {
+    public void loadThumbnail(Context context, int resize, Drawable placeholder, SimpleDraweeView imageView, Uri uri) {
         Picasso.with(context).load(uri).placeholder(placeholder)
                 .resize(resize, resize)
                 .centerCrop()
@@ -38,7 +39,7 @@ public class PicassoEngine implements ImageEngine {
     }
 
     @Override
-    public void loadGifThumbnail(Context context, int resize, Drawable placeholder, ImageView imageView,
+    public void loadGifThumbnail(Context context, int resize, Drawable placeholder, SimpleDraweeView imageView,
                                  Uri uri) {
         loadThumbnail(context, resize, placeholder, imageView, uri);
     }

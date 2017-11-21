@@ -20,6 +20,8 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.widget.ImageView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
+
 /**
  * Image loader interface. There are predefined {@link com.zhihu.matisse.engine.impl.GlideEngine}
  * and {@link com.zhihu.matisse.engine.impl.PicassoEngine}.
@@ -36,7 +38,7 @@ public interface ImageEngine {
      * @param imageView   ImageView widget
      * @param uri         Uri of the loaded image
      */
-    void loadThumbnail(Context context, int resize, Drawable placeholder, ImageView imageView, Uri uri);
+    void loadThumbnail(Context context, int resize, Drawable placeholder, SimpleDraweeView imageView, Uri uri);
 
     /**
      * Load thumbnail of a gif image resource. You don't have to load an animated gif when it's only
@@ -48,7 +50,7 @@ public interface ImageEngine {
      * @param imageView   ImageView widget
      * @param uri         Uri of the loaded image
      */
-    void loadGifThumbnail(Context context, int resize, Drawable placeholder, ImageView imageView, Uri uri);
+    void loadGifThumbnail(Context context, int resize, Drawable placeholder, SimpleDraweeView imageView, Uri uri);
 
     /**
      * Load a static image resource.

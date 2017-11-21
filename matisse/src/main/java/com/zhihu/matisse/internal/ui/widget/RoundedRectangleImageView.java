@@ -19,10 +19,11 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Path;
 import android.graphics.RectF;
-import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 
-public class RoundedRectangleImageView extends AppCompatImageView {
+import com.facebook.drawee.view.SimpleDraweeView;
+
+public class RoundedRectangleImageView extends SimpleDraweeView {
 
     private float mRadius; // dp
     private Path mRoundedRectPath;
