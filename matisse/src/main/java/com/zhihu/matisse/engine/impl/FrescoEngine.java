@@ -21,7 +21,7 @@ public class FrescoEngine implements ImageEngine {
 
     @Override
     public void loadGifThumbnail(Context context, int resize, Drawable placeholder, SimpleDraweeView imageView, Uri uri) {
-
+        FrecoUtils.displayImage(imageView, uri.toString());
     }
 
     @Override
