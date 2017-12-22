@@ -213,7 +213,7 @@ public class MatisseActivity extends AppCompatActivity implements
         }
     }
 
-    private void updateBottomToolbar() {
+    public void updateBottomToolbar() {
         int selectedCount = mSelectedCollection.count();
         if (selectedCount == 0) {
             mButtonPreview.setEnabled(false);
@@ -322,6 +322,10 @@ public class MatisseActivity extends AppCompatActivity implements
     @Override
     public SelectedItemCollection provideSelectedItemCollection() {
         return mSelectedCollection;
+    }
+
+    public SelectionSpec getSelectionSpec(){
+        return mSpec;
     }
 
     @Override

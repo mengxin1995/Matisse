@@ -47,6 +47,7 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
     private static final int REQUEST_CODE_CHOOSE = 23;
 
     private UriAdapter mAdapter;
+    private List<Uri> uris;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +88,7 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
                                             .gridExpectedSize(
                                                     getResources().getDimensionPixelSize(R.dimen.grid_expected_size))
                                             .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
+                                            .picList(uris)
                                             .thumbnailScale(0.85f)
                                             .imageEngine(new FrescoEngine())
                                             .forResult(REQUEST_CODE_CHOOSE);
@@ -97,6 +99,7 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
                                             .theme(R.style.Matisse_Dracula)
                                             .countable(false)
                                             .maxSelectable(9)
+                                            .picList(uris)
                                             .imageEngine(new FrescoEngine())
                                             .forResult(REQUEST_CODE_CHOOSE);
                                     break;
@@ -124,6 +127,7 @@ public class SampleActivity extends AppCompatActivity implements View.OnClickLis
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_CHOOSE && resultCode == RESULT_OK) {
+            uris = Matisse.obtainResult(data);
             mAdapter.setData(Matisse.obtainResult(data), Matisse.obtainPathResult(data));
         }
     }

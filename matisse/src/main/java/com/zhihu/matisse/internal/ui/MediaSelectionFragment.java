@@ -20,6 +20,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -35,6 +36,8 @@ import com.zhihu.matisse.internal.model.SelectedItemCollection;
 import com.zhihu.matisse.internal.ui.adapter.AlbumMediaAdapter;
 import com.zhihu.matisse.internal.ui.widget.MediaGridInset;
 import com.zhihu.matisse.internal.utils.UIUtils;
+import com.zhihu.matisse.ui.MatisseActivity;
+
 
 public class MediaSelectionFragment extends Fragment implements
         AlbumMediaCollection.AlbumMediaCallbacks, AlbumMediaAdapter.CheckStateListener,
@@ -129,6 +132,19 @@ public class MediaSelectionFragment extends Fragment implements
 
     @Override
     public void onAlbumMediaLoad(Cursor cursor) {
+        FragmentActivity activity = getActivity();
+        if(activity instanceof MatisseActivity){
+            MatisseActivity matisseActivity = (MatisseActivity) activity;
+            SelectionSpec selectionSpec = matisseActivity.getSelectionSpec();
+            while (cursor.moveToNext()){
+                Item item = Item.valueOf(cursor);
+                if(selectionSpec.picList != null && selectionSpec.picList.contains(item.uri)){
+                    mSelectionProvider.provideSelectedItemCollection().add(item);
+                }
+            }
+            cursor.moveToFirst();
+            matisseActivity.updateBottomToolbar();
+        }
         mAdapter.swapCursor(cursor);
     }
 
